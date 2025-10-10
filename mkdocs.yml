@@ -1,0 +1,27 @@
+site_name: pypia_ctl
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - content.code.copy
+nav:
+  - Home: index.md
+  - Usage: usage.md
+  - API: api.md
+  - Adapters: adapters.md
+  - CLI: cli.md
+  - Errors: errors.md
+  - Development: development.md
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - attr_list
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_source: false

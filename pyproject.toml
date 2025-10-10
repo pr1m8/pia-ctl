@@ -1,0 +1,101 @@
+[build-system]
+requires = ["pdm-backend>=2.3"]
+build-backend = "pdm.backend"
+
+[project]
+name = "pypia-ctl"
+version = "0.1.0"
+description = "Typed mini-SDK for the PIA `piactl` CLI with env settings, strategy connect, async monitor, and proxy adapters."
+readme = "README.md"
+requires-python = "==3.13.*"
+license = { text = "MIT" }
+authors = [
+  { name = "0rac130fD31phi", email = "william.astley@algebraicwealth.com" },
+]
+keywords = ["pia", "vpn", "piactl", "proxy", "playwright", "selenium", "httpx", "pydantic"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.13",
+  "Typing :: Typed",
+]
+
+dependencies = [
+  "pydantic>=2.7",
+  "pydantic-settings>=2.2",
+]
+
+[project.optional-dependencies]
+cli = ["typer[all]>=0.12"]
+net = ["httpx>=0.27", "selenium>=4", "playwright>=1.46"]
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.6.21",
+    "mkdocstrings[python]>=0.30.1",
+    "mkdocs-gen-files>=0.5.0",
+    "mkdocs-literate-nav>=0.6.2",
+    "mkdocs-section-index>=0.3.10",
+    "mkdocs-include-markdown-plugin>=7.2.0",
+]
+sphinx = ["sphinx>=7.4", "furo>=2024.8.6", "myst-parser>=3.0"]
+test = ["pytest>=8", "pytest-cov>=5"]
+
+[project.urls]
+Homepage = "https://github.com/your-org/pypia_ctl"
+Issues = "https://github.com/your-org/pypia_ctl/issues"
+Documentation = "https://your-org.github.io/pypia_ctl/"
+
+[project.scripts]
+pypia = "pypia_ctl.cli:main"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.build]
+package-dir = "src"
+includes = ["src"]
+
+[tool.pdm.dev-dependencies]
+dev = ["ruff>=0.6", "mypy>=1.11", "pre-commit>=3.7"]
+test = ["pytest>=8", "pytest-cov>=5"]
+docs = ["mkdocs>=1.6", "mkdocs-material>=9.5", "mkdocstrings[python]>=0.24"]
+sphinx = ["sphinx>=7.4", "furo>=2024.8.6", "myst-parser>=3.0"]
+
+[tool.pdm.scripts]
+fmt = "ruff format ."
+lint = "ruff check ."
+typecheck = "mypy src/pypia_ctl"
+test = "pytest -q --cov=pypia_ctl --cov-report=term-missing"
+docs = "mkdocs serve"
+sphinx-html = "sphinx-build -b html sphinx-docs sphinx-docs/_build/html"
+build = "pdm build"
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.13"
+strict = false
+ignore_missing_imports = true
+warn_unused_ignores = true
+show_error_codes = true
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["pypia_ctl"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false

@@ -1,0 +1,2538 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../usage/">
+      
+      
+        <link rel="next" href="../adapters/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>API - pypia_ctl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2a3383ac.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="pypia_ctl" class="md-header__button md-logo" aria-label="pypia_ctl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pypia_ctl
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pypia_ctl" class="md-nav__button md-logo" aria-label="pypia_ctl" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    pypia_ctl
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pypia_ctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      pypia_ctl
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="pypia_ctl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.MonitorEvent" class="md-nav__link">
+    <span class="md-ellipsis">
+      MonitorEvent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaConnectTimeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaConnectTimeout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaCtlError" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaCtlError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaCtlInvocationFailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaCtlInvocationFailed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaCtlNotFound" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaCtlNotFound
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaSettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaSettings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaStatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.Plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.connect_with_strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      connect_with_strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.disconnect_vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      disconnect_vpn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.ensure_env_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      ensure_env_file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.fetch_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      fetch_status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.generate_env_text" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_env_text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.get_regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_regions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.init_settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      init_settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.load_plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      monitor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adapters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Errors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pypia_ctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      pypia_ctl
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="pypia_ctl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.MonitorEvent" class="md-nav__link">
+    <span class="md-ellipsis">
+      MonitorEvent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaConnectTimeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaConnectTimeout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaCtlError" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaCtlError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaCtlInvocationFailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaCtlInvocationFailed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaCtlNotFound" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaCtlNotFound
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaSettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaSettings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.PiaStatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      PiaStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.Plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.connect_with_strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      connect_with_strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.disconnect_vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      disconnect_vpn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.ensure_env_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      ensure_env_file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.fetch_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      fetch_status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.generate_env_text" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_env_text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.get_regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_regions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.init_settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      init_settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.load_plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypia_ctl.monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      monitor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="pypia_ctl" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">pypia_ctl</span>
+
+
+<a href="#pypia_ctl" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Private Internet Access (PIA) CLI Mini-SDK — :mod:<code>pypia_ctl</code>.</p>
+
+
+<details class="purpose" open>
+  <summary>Purpose</summary>
+  <p>A compact, typed wrapper around the official :mod:<code>piactl</code> command for
+Python apps that need to programmatically control PIA and route that state
+into HTTP/browser clients. Provides:
+  * Strict subprocess runner with <strong>typed exceptions</strong>.
+  * Synchronous getters and <strong>strategy connect</strong> (preferred → random → default).
+  * Async <strong>monitor</strong> for live updates.
+  * :mod:<code>pydantic_settings</code>-backed configuration (env/.env/defaults).
+  * Non-destructive <strong>.env</strong> helpers (create/merge/print).
+  * (Optional) adapters for Playwright/httpx/Selenium proxy setup.
+  * (Optional) tiny plugin protocol and loader.</p>
+</details>
+
+<details class="design" open>
+  <summary>Design</summary>
+  <ul>
+<li>Zero hidden caching; every call shells <code>piactl</code>.</li>
+<li>No network calls beyond invoking the PIA daemon via CLI.</li>
+<li>Side effects only when calling mutators (<code>connect</code>, <code>disconnect</code>, <code>set</code>).</li>
+</ul>
+</details>
+
+<details class="public-api" open>
+  <summary>Public API</summary>
+  <p>Config &amp; bootstrap:
+    - :class:<code>~pypia_ctl.config.PiaSettings</code>
+    - :func:<code>~pypia_ctl.bootstrap.init_settings</code>
+    - :func:<code>~pypia_ctl.envtools.ensure_env_file</code>
+    - :func:<code>~pypia_ctl.envtools.generate_env_text</code>
+Core:
+    - :class:<code>~pypia_ctl.core.PiaStatus</code>
+    - :class:<code>~pypia_ctl.core.MonitorEvent</code>
+    - :func:<code>~pypia_ctl.core.fetch_status</code>
+    - :func:<code>~pypia_ctl.core.connect_with_strategy</code>
+    - :func:<code>~pypia_ctl.core.disconnect_vpn</code>
+    - :func:<code>~pypia_ctl.core.get_regions</code>
+    - :func:<code>~pypia_ctl.core.monitor</code>
+Exceptions:
+    - :class:<code>~pypia_ctl.exceptions.PiaCtlError</code>
+    - :class:<code>~pypia_ctl.exceptions.PiaCtlNotFound</code>
+    - :class:<code>~pypia_ctl.exceptions.PiaCtlInvocationFailed</code>
+    - :class:<code>~pypia_ctl.exceptions.PiaConnectTimeout</code>
+Optional:
+    - :mod:<code>pypia_ctl.adapters</code> (proxy helpers)
+    - :class:<code>~pypia_ctl.plugins.Plugin</code>, :func:<code>~pypia_ctl.plugins.load_plugins</code></p>
+</details>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; from pypia_ctl import init_settings, fetch_status
+    &gt;&gt;&gt; s = init_settings(create_env=False)  # no writes; OS env &gt; .env &gt; defaults
+    &gt;&gt;&gt; isinstance(s.protocol, str)
+    True</p>
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<h3 id="pypia_ctl-classes">Classes<a href="#pypia_ctl-classes" class="headerlink" title="Permanent link">&para;</a></h3>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h4 id="pypia_ctl.MonitorEvent" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">MonitorEvent</span>
+
+
+<a href="#pypia_ctl.MonitorEvent" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+
+
+        <p>One update line from <code>piactl monitor &lt;key&gt;</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>key</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The key monitored (e.g., <code>"connectionstate"</code>).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>value</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The text value emitted by the daemon.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>A</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>MonitorEvent</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; MonitorEvent(key="connectionstate", value="Connected").value
+    'Connected'</p>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h4 id="pypia_ctl.PiaConnectTimeout" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">PiaConnectTimeout</span>
+
+
+<a href="#pypia_ctl.PiaConnectTimeout" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="PiaCtlError (pypia_ctl.exceptions.PiaCtlError)" href="../errors/#pypia_ctl.exceptions.PiaCtlError">PiaCtlError</a></code></p>
+
+
+        <p>Did not reach <code>Connected</code> within the polling window.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h4 id="pypia_ctl.PiaCtlError" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">PiaCtlError</span>
+
+
+<a href="#pypia_ctl.PiaCtlError" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="Exception">Exception</span></code></p>
+
+
+        <p>Base error for :mod:<code>pypia_ctl</code> operations.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h4 id="pypia_ctl.PiaCtlInvocationFailed" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">PiaCtlInvocationFailed</span>
+
+
+<a href="#pypia_ctl.PiaCtlInvocationFailed" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="PiaCtlError (pypia_ctl.exceptions.PiaCtlError)" href="../errors/#pypia_ctl.exceptions.PiaCtlError">PiaCtlError</a></code></p>
+
+
+        <p><code>piactl</code> returned non-zero or the subprocess/timeout failed.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h4 id="pypia_ctl.PiaCtlNotFound" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">PiaCtlNotFound</span>
+
+
+<a href="#pypia_ctl.PiaCtlNotFound" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="PiaCtlError (pypia_ctl.exceptions.PiaCtlError)" href="../errors/#pypia_ctl.exceptions.PiaCtlError">PiaCtlError</a></code></p>
+
+
+        <p><code>piactl</code> executable not found on PATH.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h4 id="pypia_ctl.PiaSettings" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">PiaSettings</span>
+
+
+<a href="#pypia_ctl.PiaSettings" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic_settings.BaseSettings">BaseSettings</span></code></p>
+
+
+        <p>User preferences &amp; runtime knobs.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>protocol</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>"wireguard"</code> (default) or <code>"openvpn"</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>default_region</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Fallback region slug, e.g. <code>"auto"</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>preferred_regions</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><strong>JSON array</strong> of region slugs; first available wins in "preferred".</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>randomize_region</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, allow random choice among eligible regions.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>subprocess_timeout_sec</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Timeout (s) for individual <code>piactl</code> calls.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>monitor_line_timeout_sec</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Timeout (s) per line for monitor.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>plugins</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><strong>JSON array</strong> of fully-qualified plugin class paths.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>region_filters</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rules to constrain region selection.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>proxy</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Proxy configuration for adapters.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="environment" open>
+  <summary>Environment</summary>
+  <ul>
+<li><code>PIA_PROTOCOL</code> (<code>wireguard</code>|<code>openvpn</code>)</li>
+<li><code>PIA_DEFAULT_REGION</code> (e.g. <code>auto</code>)</li>
+<li><code>PIA_PREFERRED_REGIONS</code> (JSON array)</li>
+<li><code>PIA_RANDOMIZE_REGION</code> (true/false)</li>
+<li><code>PIA_SUBPROCESS_TIMEOUT_SEC</code> (int)</li>
+<li><code>PIA_MONITOR_LINE_TIMEOUT_SEC</code> (int)</li>
+<li><code>PIA_PLUGINS</code> (JSON array)</li>
+<li><code>PIA_REGION_FILTERS__include_streaming</code> (bool)</li>
+<li><code>PIA_REGION_FILTERS__include_countries</code> (JSON array)</li>
+<li><code>PIA_REGION_FILTERS__exclude_countries</code> (JSON array)</li>
+<li><code>PIA_PROXY__KIND</code> (<code>socks5</code>|<code>http</code>)</li>
+<li><code>PIA_PROXY__HOST</code>, <code>PIA_PROXY__PORT</code> (int)</li>
+<li><code>PIA_PROXY__USERNAME</code>, <code>PIA_PROXY__PASSWORD</code></li>
+</ul>
+</details>
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h4 id="pypia_ctl.PiaStatus" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">PiaStatus</span>
+
+
+<a href="#pypia_ctl.PiaStatus" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+
+
+        <p>Snapshot of PIA state (JSON-log friendly).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>connection_state</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Current state.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>region</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Selected region slug (or <code>"auto"</code>).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>regions</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>All known region slugs (plus <code>"auto"</code>).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>vpn_ip</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Current VPN IP string or <code>None</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>protocol</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Selected protocol (if exposed by this build).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>debug_logging</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether debug logging is enabled.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>port_forward</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Port forward model.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>request_port_forward</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether PF is requested (if exposed).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A validated :class:<code>PiaStatus</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; PiaStatus(
+    ...   connection_state="Disconnected",
+    ...   region="auto",
+    ...   regions=["auto"],
+    ...   vpn_ip=None,
+    ...   protocol=None,
+    ...   debug_logging=False,
+    ...   port_forward=PortForward(),
+    ...   request_port_forward=None,
+    ... ).connection_state
+    'Disconnected'</p>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h4 id="pypia_ctl.Plugin" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">Plugin</span>
+
+
+<a href="#pypia_ctl.Plugin" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+
+        <p>Base class for plugins.</p>
+
+
+<details class="notes" open>
+  <summary>Notes</summary>
+  <p>Subclass this, provide your behavior in <strong>init</strong>/methods, and ensure the
+class can be instantiated without required parameters.</p>
+</details>
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+<h3 id="pypia_ctl-functions">Functions<a href="#pypia_ctl-functions" class="headerlink" title="Permanent link">&para;</a></h3>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pypia_ctl.connect_with_strategy" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">connect_with_strategy</span>
+
+
+<a href="#pypia_ctl.connect_with_strategy" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">connect_with_strategy</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;preferred&quot;</span><span class="p">,</span>
+    <span class="n">exact_region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_retries</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Connect using settings + strategy, with simple retries.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>strategy</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>One of <code>"preferred"</code>, <code>"random"</code>, <code>"exact"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;preferred&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>exact_region</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>When <code>strategy="exact"</code>, this slug is used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_retries</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Reconnect attempts on failure.</p>
+              </div>
+            </td>
+            <td>
+                  <code>2</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="PiaCtlNotFound (pypia_ctl.exceptions.PiaCtlNotFound)" href="../errors/#pypia_ctl.exceptions.PiaCtlNotFound">PiaCtlNotFound</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>piactl</code> not on PATH.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="PiaCtlInvocationFailed (pypia_ctl.exceptions.PiaCtlInvocationFailed)" href="../errors/#pypia_ctl.exceptions.PiaCtlInvocationFailed">PiaCtlInvocationFailed</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>piactl connect</code>/<code>disconnect</code> failed.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="PiaConnectTimeout (pypia_ctl.exceptions.PiaConnectTimeout)" href="../errors/#pypia_ctl.exceptions.PiaConnectTimeout">PiaConnectTimeout</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Did not reach <code>Connected</code> within the poll window.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; isinstance(1, int)
+    True</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pypia_ctl.disconnect_vpn" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">disconnect_vpn</span>
+
+
+<a href="#pypia_ctl.disconnect_vpn" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">disconnect_vpn</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Disconnect the VPN (best effort).</p>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="PiaCtlNotFound (pypia_ctl.exceptions.PiaCtlNotFound)" href="../errors/#pypia_ctl.exceptions.PiaCtlNotFound">PiaCtlNotFound</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>piactl</code> not on PATH.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="PiaCtlInvocationFailed (pypia_ctl.exceptions.PiaCtlInvocationFailed)" href="../errors/#pypia_ctl.exceptions.PiaCtlInvocationFailed">PiaCtlInvocationFailed</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>piactl disconnect</code> failed.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; isinstance(True, bool)
+    True</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pypia_ctl.ensure_env_file" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">ensure_env_file</span>
+
+
+<a href="#pypia_ctl.ensure_env_file" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">ensure_env_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Create or merge a <code>.env</code> file without overwriting existing keys.</p>
+
+
+<details class="behavior" open>
+  <summary>Behavior</summary>
+  <ul>
+<li>If the file does not exist, write defaults (plus trailing newline).</li>
+<li>If it exists, append only missing keys (keep current values/comments).</li>
+<li>Ignores comment/blank lines on read.</li>
+</ul>
+</details>
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Destination path for the <code>.env</code> file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>defaults</code>
+            </td>
+            <td>
+                  <code><span title="typing.Iterable">Iterable</span>[<span title="str">str</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional custom defaults (lines like <code>KEY=VALUE</code>). If
+omitted, :data:<code>DEFAULT_ENV</code> is used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>None</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If any provided default line lacks an <code>=</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; from pathlib import Path
+    &gt;&gt;&gt; p = Path("._ensure.env")
+    &gt;&gt;&gt; try:
+    ...     ensure_env_file(p)
+    ...     ensure_env_file(p)  # idempotent
+    ...     "PIA_PROTOCOL=" in p.read_text()
+    ... finally:
+    ...     p.unlink(missing_ok=True)
+    True</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pypia_ctl.fetch_status" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">fetch_status</span>
+
+
+<a href="#pypia_ctl.fetch_status" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">fetch_status</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Return a one-shot status snapshot by querying multiple getters.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>A</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="PiaStatus (pypia_ctl.core.PiaStatus)" href="#pypia_ctl.PiaStatus">PiaStatus</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>PiaStatus</code> ready for logs/health checks.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="PiaCtlError (pypia_ctl.exceptions.PiaCtlError)" href="../errors/#pypia_ctl.exceptions.PiaCtlError">PiaCtlError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Any underlying runner error will bubble up.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; isinstance(True, bool)
+    True</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pypia_ctl.generate_env_text" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">generate_env_text</span>
+
+
+<a href="#pypia_ctl.generate_env_text" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">generate_env_text</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Return newline-terminated <code>.env</code> content.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra</code>
+            </td>
+            <td>
+                  <code><span title="typing.Mapping">Mapping</span>[<span title="str">str</span>, <span title="str">str</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional mapping of additional key→value pairs to append.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>str</code></td>            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Content suitable to be written to disk.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; txt = generate_env_text({"FOO": "bar"})
+    &gt;&gt;&gt; "FOO=bar" in txt
+    True</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pypia_ctl.get_regions" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">get_regions</span>
+
+
+<a href="#pypia_ctl.get_regions" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_regions</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Return all available region slugs (plus 'auto').</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pypia_ctl.init_settings" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">init_settings</span>
+
+
+<a href="#pypia_ctl.init_settings" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">init_settings</span><span class="p">(</span>
+    <span class="n">create_env</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;.env&quot;</span><span class="p">,</span> <span class="n">overrides</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize :class:<code>~pypia_ctl.config.PiaSettings</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>create_env</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, ensure a <code>.env</code> exists (non-destructive merge).</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>env_path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the <code>.env</code> to create/merge (when <code>create_env</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;.env&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>overrides</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>In-memory overrides to apply after loading from env/.env.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>PiaSettings</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="PiaSettings (pypia_ctl.config.PiaSettings)" href="#pypia_ctl.PiaSettings">PiaSettings</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A loaded, optionally overridden settings object.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; from pypia_ctl.bootstrap import init_settings
+    &gt;&gt;&gt; s = init_settings(create_env=False, overrides={"protocol": "openvpn"})
+    &gt;&gt;&gt; s.protocol
+    'openvpn'</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pypia_ctl.load_plugins" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">load_plugins</span>
+
+
+<a href="#pypia_ctl.load_plugins" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">load_plugins</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Load and instantiate plugins.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>paths</code>
+            </td>
+            <td>
+                  <code><span title="typing.Iterable">Iterable</span>[<span title="str">str</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Iterable of <code>"pkg.module:ClassName"</code> entries. If <code>None</code>,
+discovery uses :class:<code>~pypia_ctl.config.PiaSettings</code>.plugins.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ignore_errors</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, skip invalid entries; otherwise raise.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="Plugin (pypia_ctl.plugins.Plugin)" href="#pypia_ctl.Plugin">Plugin</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>list[Plugin]: Instantiated plugins (possibly empty).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>(<span title="ValueError">ValueError</span>, <span title="ImportError">ImportError</span>, <span title="TypeError">TypeError</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>When an entry is invalid (and</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; load_plugins(paths=[], ignore_errors=True)
+    []</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pypia_ctl.monitor" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">monitor</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+<a href="#pypia_ctl.monitor" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">monitor</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Yield :class:<code>MonitorEvent</code> for live updates via <code>piactl monitor &lt;key&gt;</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>key</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>e.g., <code>"connectionstate"</code> or <code>"vpnip"</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Yields:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Iterable">Iterable</span>[<a class="autorefs autorefs-internal" title="MonitorEvent (pypia_ctl.core.MonitorEvent)" href="#pypia_ctl.MonitorEvent">MonitorEvent</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>MonitorEvent</code> values as lines arrive.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="PiaCtlNotFound (pypia_ctl.exceptions.PiaCtlNotFound)" href="../errors/#pypia_ctl.exceptions.PiaCtlNotFound">PiaCtlNotFound</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>piactl</code> is not on PATH.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>::
+    &gt;&gt;&gt; isinstance(True, bool)
+    True</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
