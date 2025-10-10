@@ -18,24 +18,17 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Install PDM
-        run: python -m pip install -U pip pdm
-
-      - name: Install dependencies
-        run: pdm install
+      - name: Install build dependencies
+        run: python -m pip install -U pip build twine
 
       - name: Build artifacts
-        run: pdm build
+        run: python -m build
 
       - name: Twine check
-        run: |
-          python -m pip install -U twine
-          twine check dist/*
+        run: twine check dist/*
 
       - name: Publish to PyPI
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          python -m pip install -U twine
-          twine upload dist/*
+        run: twine upload dist/*
