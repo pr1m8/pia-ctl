@@ -1,0 +1,13 @@
+name: "📝 Docs improvement"
+description: Improve docs, examples, or site
+labels: ["documentation"]
+body:
+  - type: textarea
+    id: location
+    attributes: { label: Docs location, description: Files/URLs to update }
+  - type: textarea
+    id: change
+    attributes: { label: Proposed change }
+  - type: input
+    id: pr
+    attributes: { label: Willing to open a PR?, placeholder: "yes/no" }

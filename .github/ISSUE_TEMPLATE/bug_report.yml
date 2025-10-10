@@ -1,0 +1,37 @@
+name: "🐞 Bug report"
+description: Report a reproducible problem
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: "Python 3.12.x / pypia_ctl 0.1.0"
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options: ["macOS", "Linux", "Windows", "Other"]
+  - type: textarea
+    id: expected
+    attributes: { label: Expected behavior }
+  - type: textarea
+    id: actual
+    attributes: { label: Actual behavior }
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps/code. Redact secrets.
+      render: shell
+  - type: textarea
+    id: logs
+    attributes: { label: Logs / stack traces, render: text }
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched for duplicates
+        - label: I can reproduce on latest main
+        - label: This is not a support question
