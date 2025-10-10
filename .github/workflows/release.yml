@@ -21,8 +21,8 @@ jobs:
       - name: Install PDM
         run: python -m pip install -U pip pdm
 
-      - name: Install build deps (no project deps)
-        run: pdm install --prod --no-self --no-editable
+      - name: Install dependencies
+        run: pdm install
 
       - name: Build artifacts
         run: pdm build
