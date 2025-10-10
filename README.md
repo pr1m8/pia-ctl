@@ -44,10 +44,10 @@ pip install -e ".[dev,docs]"
 
 ## 🚀 Quick Start
 
-### Basic Usage
+### Basic Python Usage
 
 ```python
-from pypia_ctl import init_settings, connect_vpn
+from pypia_ctl import init_settings, connect_vpn, get_status
 
 # Initialize with environment settings
 settings = init_settings(create_env=True)
@@ -55,6 +55,84 @@ settings = init_settings(create_env=True)
 # Connect to VPN with preferred region
 result = connect_vpn(region="us-east")
 print(f"Connected: {result.success}")
+
+# Check VPN status
+status = get_status()
+print(f"VPN Status: {status.connected}")
+print(f"Current Region: {status.region}")
+print(f"IP Address: {status.ip_address}")
+```
+
+### Advanced Python Examples
+
+```python
+from pypia_ctl import PiaSettings, connect_with_strategy, monitor_connection
+import asyncio
+
+# Custom settings
+settings = PiaSettings(
+    protocol="wireguard",
+    default_region="auto",
+    preferred_regions=["us-east", "us-west", "europe"],
+    randomize_region=True
+)
+
+# Connect with fallback strategy
+result = connect_with_strategy(
+    preferred=["us-east", "us-west"],
+    fallback="random",
+    timeout=30
+)
+
+# Async monitoring
+async def monitor_vpn():
+    async for status in monitor_connection():
+        print(f"Status: {status.connected} - Region: {status.region}")
+        if not status.connected:
+            print("VPN disconnected, attempting reconnection...")
+            connect_vpn()
+
+# Run monitoring
+asyncio.run(monitor_vpn())
+```
+
+### Proxy Integration Examples
+
+```python
+from pypia_ctl import PiaSettings
+from pypia_ctl.adapters import PlaywrightAdapter, HttpxAdapter
+import httpx
+from playwright.async_api import async_playwright
+
+# Configure proxy settings
+settings = PiaSettings(
+    proxy={
+        "kind": "socks5",
+        "host": "127.0.0.1",
+        "port": 1080,
+        "username": "user",
+        "password": "pass"
+    }
+)
+
+# Use with httpx
+async with HttpxAdapter(settings) as client:
+    response = await client.get("https://httpbin.org/ip")
+    print(f"IP: {response.json()['origin']}")
+
+# Use with Playwright
+async with async_playwright() as p:
+    browser = await p.chromium.launch()
+    page = await browser.new_page()
+
+    # Configure proxy
+    await page.context.set_extra_http_headers({
+        "Proxy-Authorization": "Basic dXNlcjpwYXNz"
+    })
+
+    await page.goto("https://httpbin.org/ip")
+    content = await page.content()
+    print("Page loaded with proxy")
 ```
 
 ### CLI Usage
@@ -63,14 +141,26 @@ print(f"Connected: {result.success}")
 # Initialize environment configuration
 pypia env-init
 
-# Connect to VPN
+# Connect to VPN with specific region
 pypia connect --region us-east
 
-# Check status
-pypia status
+# Connect with fallback strategy
+pypia connect --preferred us-east,us-west --fallback random
+
+# Check detailed status
+pypia status --verbose
+
+# Monitor connection in real-time
+pypia monitor
 
 # Disconnect
 pypia disconnect
+
+# List available regions
+pypia regions
+
+# Print environment configuration
+pypia env-print
 ```
 
 ### Environment Configuration
@@ -86,6 +176,227 @@ PIA_PROTOCOL=wireguard
 PIA_DEFAULT_REGION=auto
 PIA_RANDOMIZE_REGION=true
 PIA_PREFERRED_REGIONS=["us-east", "us-west", "europe"]
+```
+
+## 📖 API Reference
+
+### Core Functions
+
+```python
+from pypia_ctl import (
+    init_settings,           # Initialize settings from env/.env
+    connect_vpn,            # Connect to VPN
+    disconnect_vpn,         # Disconnect VPN
+    get_status,             # Get current VPN status
+    connect_with_strategy,  # Connect with fallback strategy
+    monitor_connection,     # Async connection monitoring
+    ensure_env_file,        # Create/merge .env file
+    generate_env_text,      # Generate .env content
+)
+
+# Settings and Configuration
+from pypia_ctl import PiaSettings, EnvStatus
+
+# Adapters for proxy integration
+from pypia_ctl.adapters import PlaywrightAdapter, HttpxAdapter, SeleniumAdapter
+
+# Exceptions
+from pypia_ctl.exceptions import PiaError, ConnectionError, TimeoutError
+```
+
+### Settings Configuration
+
+```python
+from pypia_ctl import PiaSettings
+
+# Full configuration example
+settings = PiaSettings(
+    # VPN Protocol
+    protocol="wireguard",  # or "openvpn"
+
+    # Region Settings
+    default_region="auto",
+    randomize_region=True,
+    preferred_regions=["us-east", "us-west", "europe"],
+
+    # Region Filtering
+    region_filters={
+        "include_streaming": False,
+        "include_countries": ["US", "CA", "GB"],
+        "exclude_countries": ["CN", "RU"]
+    },
+
+    # Proxy Configuration
+    proxy={
+        "kind": "socks5",
+        "host": "127.0.0.1",
+        "port": 1080,
+        "username": "user",
+        "password": "pass"
+    },
+
+    # Plugin Configuration
+    plugins=["custom_plugin", "monitoring_plugin"]
+)
+```
+
+## 🎯 Use Cases
+
+### 1. Web Scraping with VPN
+
+```python
+from pypia_ctl import connect_vpn, HttpxAdapter
+import httpx
+
+# Connect to VPN
+connect_vpn(region="us-east")
+
+# Use with httpx for web scraping
+async with HttpxAdapter() as client:
+    response = await client.get("https://example.com")
+    print(f"Scraped content: {response.text[:100]}...")
+```
+
+### 2. Automated Testing with Playwright
+
+```python
+from pypia_ctl import connect_vpn
+from playwright.async_api import async_playwright
+
+# Connect to VPN before testing
+connect_vpn(region="europe")
+
+async def test_with_vpn():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch()
+        page = await browser.new_page()
+
+        # Test from different geographic location
+        await page.goto("https://httpbin.org/ip")
+        ip_info = await page.text_content("body")
+        print(f"Testing from IP: {ip_info}")
+
+        await browser.close()
+
+# Run test
+import asyncio
+asyncio.run(test_with_vpn())
+```
+
+### 3. CI/CD Pipeline Integration
+
+```yaml
+# .github/workflows/test-with-vpn.yml
+name: Test with VPN
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pip install pia-ctl-sdk
+
+      - name: Connect to VPN and test
+        run: |
+          pypia connect --region us-east
+          python -m pytest tests/
+          pypia disconnect
+```
+
+### 4. Monitoring and Alerting
+
+```python
+import asyncio
+from pypia_ctl import monitor_connection, connect_vpn
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+async def vpn_monitor():
+    """Monitor VPN connection and auto-reconnect if needed."""
+    async for status in monitor_connection():
+        if not status.connected:
+            logger.warning("VPN disconnected! Attempting reconnection...")
+            try:
+                connect_vpn()
+                logger.info("VPN reconnected successfully")
+            except Exception as e:
+                logger.error(f"Failed to reconnect VPN: {e}")
+        else:
+            logger.info(f"VPN connected: {status.region} ({status.ip_address})")
+
+# Run monitoring
+asyncio.run(vpn_monitor())
+```
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+#### 1. VPN Connection Fails
+
+```python
+from pypia_ctl import connect_vpn, get_status
+from pypia_ctl.exceptions import ConnectionError
+
+try:
+    result = connect_vpn(region="us-east")
+    if not result.success:
+        print(f"Connection failed: {result.error}")
+
+        # Try alternative region
+        result = connect_vpn(region="us-west")
+
+except ConnectionError as e:
+    print(f"Connection error: {e}")
+
+    # Check if piactl is installed
+    status = get_status()
+    if not status.piactl_available:
+        print("piactl not found. Please install PIA client.")
+```
+
+#### 2. Environment Configuration Issues
+
+```python
+from pypia_ctl import ensure_env_file, generate_env_text
+
+# Create .env file with defaults
+ensure_env_file(".env")
+
+# Check generated configuration
+env_content = generate_env_text()
+print("Generated .env content:")
+print(env_content)
+```
+
+#### 3. Proxy Configuration Problems
+
+```python
+from pypia_ctl import PiaSettings, HttpxAdapter
+
+# Test proxy configuration
+settings = PiaSettings(
+    proxy={
+        "kind": "socks5",
+        "host": "127.0.0.1",
+        "port": 1080
+    }
+)
+
+try:
+    async with HttpxAdapter(settings) as client:
+        response = await client.get("https://httpbin.org/ip")
+        print(f"Proxy working: {response.json()}")
+except Exception as e:
+    print(f"Proxy error: {e}")
 ```
 
 ## 📚 Documentation
@@ -104,6 +415,7 @@ mkdocs serve
 
 - **GitHub Pages**: [https://pr1m8.github.io/pia-ctl/](https://pr1m8.github.io/pia-ctl/)
 - **API Reference**: Available in the docs
+- **Examples**: See the `examples/` directory in the repository
 
 ## 🛠️ Development
 
