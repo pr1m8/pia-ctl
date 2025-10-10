@@ -3,7 +3,7 @@ requires = ["pdm-backend>=2.3"]
 build-backend = "pdm.backend"
 
 [project]
-name = "pypia-ctl"
+name = "pia-ctl-sdk"
 version = "0.1.2"
 description = "Typed mini-SDK for the PIA `piactl` CLI with env settings, strategy connect, async monitor, and proxy adapters."
 readme = "README.md"
